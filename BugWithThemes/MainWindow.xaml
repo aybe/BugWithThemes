@@ -1,0 +1,44 @@
+﻿<Window x:Class="BugWithThemes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:views1="clr-namespace:BugWithThemes"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Theme" ItemsSource="{Binding Source={x:Static views1:ApplicationTheme.Themes}}">
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Style.Resources>
+                            <views1:VisualStylesToBooleanConverter x:Key="VisualStylesToBooleanConverter"
+                                                                   x:Shared="True" />
+                        </Style.Resources>
+                        <Setter Property="Header" Value="{Binding Name}" />
+                        <EventSetter Event="Click" Handler="ThemeMenuItem_OnClick" />
+                        <Setter Property="IsChecked">
+                            <Setter.Value>
+                                <MultiBinding Mode="OneWay" Converter="{StaticResource VisualStylesToBooleanConverter}">
+                                    <Binding />
+                                    <Binding ElementName="Window" />
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+            </MenuItem>
+        </Menu>
+        <syncfusion:DockingManager>
+            <ContentControl syncfusion:DockingManager.State="Document"
+                            syncfusion:DockingManager.Header="Control 1"
+                            Content="Control 1" />
+            <ContentControl syncfusion:DockingManager.State="Document"
+                            syncfusion:DockingManager.Header="Control 2"
+                            Content="Control 2" />
+
+        </syncfusion:DockingManager>
+
+    </DockPanel>
+</Window>
