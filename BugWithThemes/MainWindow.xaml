@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        xmlns:views1="clr-namespace:BugWithThemes"
+        xmlns:views1="clr-namespace:BugWithThemes" x:Name="Window"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
