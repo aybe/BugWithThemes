@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        xmlns:views1="clr-namespace:BugWithThemes" x:Name="Window"
+        xmlns:views1="clr-namespace:BugWithThemes" x:Name="Window" Closing="MainWindow_OnClosing"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -30,12 +30,20 @@
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
         </Menu>
-        <syncfusion:DockingManager>
+        <syncfusion:DockingManager x:Name="DockingManager1"
+            UseNativeFloatWindow="True"
+                                   ShowFloatWindowInTaskbar="True"
+            Loaded="DockingManager_OnLoaded"
+                                   >
             <ContentControl syncfusion:DockingManager.State="Document"
                             syncfusion:DockingManager.Header="Control 1"
+                            syncfusion:DockingManager.CanMinimizeFloat="True"
+                            syncfusion:DockingManager.CanFloatMaximize="True"
                             Content="Control 1" />
-            <ContentControl syncfusion:DockingManager.State="Document"
+            <ContentControl syncfusion:DockingManager.State="Float"
                             syncfusion:DockingManager.Header="Control 2"
+                            syncfusion:DockingManager.CanMinimizeFloat="True"
+                            syncfusion:DockingManager.CanFloatMaximize="True"
                             Content="Control 2" />
 
         </syncfusion:DockingManager>
